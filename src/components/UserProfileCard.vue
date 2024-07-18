@@ -2,10 +2,12 @@
 const props = defineProps({
   userCardDetail: Object,
 });
+
+const created = props.userCardDetail.created_at.slice(0,4)
+
 </script>
 
 <template>
-  {{ props.userCardDetail }}
   <ul>
     <li>
       <div class="card">
@@ -13,10 +15,10 @@ const props = defineProps({
           <img :src="props.userCardDetail.avatar_url" alt="user-image" />
         </div>
         <h1>{{ props.userCardDetail.name }}</h1>
-        <p class="date_of_join">Joined : </p>
+        <p class="date_of_join">Joined : {{created}} </p>
       </div>
       <div class="follower">
-        <p class="date_of_join">Connection</p>
+        <p class="date_of_join">{{props.userCardDetail.following}}</p>
         <div class="flex_display">
           <img src="../assets/Image/portrait.svg" alt="user" />
           <span>{{props.userCardDetail.followers}}</span>
